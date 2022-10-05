@@ -22,10 +22,9 @@ pulse_dir = audio_dir.parent / 'pulses'
 os.makedirs(pulse_dir, exist_ok=True)
 
 for audio_file in audio_dir.glob('*.wav'):
-    # use the first 1 second to guess at a good pulse detection threshold
+    # use the first 100 milliseconds to guess a good pulse detection threshold
     sfreq, data = wavfile.read(audio_file)
-    first_sec = data[:sfreq]
-    noise_max = np.abs(first_sec).max()
+    noise_max = np.abs(data[:sfreq // 10]).max()
     # this is super coarse / not "real" SNR, but should be good enough
     snr = np.abs(data).max() / noise_max
     thresh = noise_max * int(snr // 2)
@@ -33,3 +32,5 @@ for audio_file in audio_dir.glob('*.wav'):
     binarized = (data > thresh).astype(np.uint8)
     outfile = pulse_dir / f'{audio_file.stem}.npy'
     np.save(outfile, binarized)
+    outfile_sfreq = pulse_dir / f'{audio_file.stem}_sfreq.npy'
+    np.save(outfile_sfreq, sfreq)
