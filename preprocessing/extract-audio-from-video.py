@@ -1,3 +1,7 @@
+"""
+Extracts an audio channel from a video file. Which channel gets kept (left or
+right) is determined by the config file value "audio_sync_channel".
+"""
 from pathlib import Path
 from subprocess import run
 
@@ -26,8 +30,6 @@ for _dict in cfg['files']:
     n_chan = int(n_chan)
     if codec.startswith('pcm'):
         audio_ext = 'wav'
-    elif codec.startswith('aac'):
-        audio_ext = 'aac'  # or m4a?
     else:
         raise NotImplementedError(f'unsupported audio codec {codec}')
     # extract audio channel from each video
