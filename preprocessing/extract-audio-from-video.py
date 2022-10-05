@@ -2,7 +2,6 @@ from pathlib import Path
 from subprocess import run
 
 import yaml
-
 from scipy.io import wavfile
 
 # config
