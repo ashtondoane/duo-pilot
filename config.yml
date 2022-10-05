@@ -1,0 +1,9 @@
+raw_folder: /data/duo-pilot/raw
+video_folder: /data/duo-pilot/video
+audio_folder: /data/duo-pilot/audio
+
+files:
+    - cam: duo926_01_20220812_CAM3.mp4
+      raw: duo_926/220812/duo3926_dad_01_raw.fif
+    - cam: duo928_01_20220829_CAM3.mp4
+      raw: duo_928/220829/duo3928_mom_01_raw.fif
