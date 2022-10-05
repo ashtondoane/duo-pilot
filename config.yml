@@ -1,6 +1,7 @@
 raw_folder: /data/duo-pilot/raw
 video_folder: /data/duo-pilot/video
 audio_folder: /data/duo-pilot/audio
+audio_sync_channel: 1  # 0=left, 1=right
 
 files:
     - cam: duo926_01_20220812_CAM3.mp4

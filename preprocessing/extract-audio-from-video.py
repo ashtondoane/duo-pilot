@@ -5,12 +5,12 @@ import yaml
 from scipy.io import wavfile
 
 # config
-sync_channel = 0  # left=0, right=1
 config_file = Path(__file__).parent.parent / 'config.yml'
 
 with open(config_file, 'r') as cfg_file:
     cfg = yaml.load(cfg_file, Loader=yaml.SafeLoader)
 
+chan_idx = cfg['audio_sync_channel']
 
 for _dict in cfg['files']:
     video_path = Path(cfg['video_folder']) / _dict['cam']
@@ -40,10 +40,8 @@ for _dict in cfg['files']:
                   '-map', '0:a', audio_path
                   ])
 
-    # extract only the channel with triggers in it. Assumes that the other
-    # channel is silent(ish) or at any rate much quieter.
+    # extract only the channel with triggers in it
     sfreq, data = wavfile.read(audio_path)
     if data.ndim == 2:
-        idx = data.max(axis=0).argmax()
-        data = data[:, idx]
+        data = data[:, chan_idx]
     wavfile.write(audio_path, sfreq, data)
