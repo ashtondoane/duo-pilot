@@ -18,8 +18,8 @@ with open(config_file, 'r') as cfg_file:
     cfg = yaml.load(cfg_file, Loader=yaml.SafeLoader)
 
 audio_dir = Path(cfg['audio_folder'])
-out_dir = audio_dir.parent / 'pulses'
-os.makedirs(out_dir, exist_ok=True)
+pulse_dir = audio_dir.parent / 'pulses'
+os.makedirs(pulse_dir, exist_ok=True)
 
 for audio_file in audio_dir.glob('*.wav'):
     # use the first 1 second to guess at a good pulse detection threshold
@@ -31,5 +31,5 @@ for audio_file in audio_dir.glob('*.wav'):
     thresh = noise_max * int(snr // 2)
     # now find the pulses
     binarized = (data > thresh).astype(np.uint8)
-    outfile = out_dir / f'{audio_file.stem}.npy'
+    outfile = pulse_dir / f'{audio_file.stem}.npy'
     np.save(outfile, binarized)
