@@ -22,12 +22,11 @@ for _dict in cfg['files']:
     result = run(['ffprobe',
                   '-loglevel', 'error',
                   '-select_streams', 'a:0',  # audio only
-                  '-show_entries', 'stream=codec_name,channels',
+                  '-show_entries', 'stream=codec_name',
                   '-print_format', 'default=noprint_wrappers=1:nokey=1',
                   video_path],
                  capture_output=True)
-    codec, n_chan = [x.lower() for x in result.stdout.decode().split()]
-    n_chan = int(n_chan)
+    codec = result.stdout.decode().lower()
     if codec.startswith('pcm'):
         audio_ext = 'wav'
     else:
