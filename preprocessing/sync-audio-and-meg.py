@@ -13,9 +13,9 @@ from scipy.io import wavfile
 from scipy.signal import correlate
 
 # config
-config_file = Path(__file__).parent.parent / 'config.yml'
+config_file = Path(__file__).resolve().parent.parent / 'config.yml'
 threshold = 0.1  # pulse detection in cam audio channel (global wav max = 1)
-show_plots = True
+show_plots = False
 
 with open(config_file, 'r') as cfg_file:
     cfg = yaml.load(cfg_file, Loader=yaml.SafeLoader)
@@ -32,7 +32,9 @@ if show_plots:
     plt.ion()
 
 for _dict in cfg['files']:
-    print(f'INFO: processing {Path(_dict["raw"]).parts[0]}')
+    if _dict['cam'] is None:
+        continue
+    print(f'processing {Path(_dict["raw"]).parts[0]}')
 
     # load TTL from raw & binarize
     raw_path = raw_dir / _dict['raw']

@@ -9,7 +9,7 @@ import yaml
 from scipy.io import wavfile
 
 # config
-config_file = Path(__file__).parent.parent / 'config.yml'
+config_file = Path(__file__).resolve().parent.parent / 'config.yml'
 
 with open(config_file, 'r') as cfg_file:
     cfg = yaml.load(cfg_file, Loader=yaml.SafeLoader)
@@ -17,6 +17,8 @@ with open(config_file, 'r') as cfg_file:
 chan_idx = cfg['audio_sync_channel']
 
 for _dict in cfg['files']:
+    if _dict['cam'] is None:
+        continue
     video_path = Path(cfg['video_folder']) / _dict['cam']
     # determine audio file exension
     result = run(['ffprobe',
