@@ -1,11 +1,168 @@
 raw_folder: /data/duo-pilot/raw
 video_folder: /data/duo-pilot/video
+annot_folder: /data/duo-pilot/annot
 audio_folder: /data/duo-pilot/audio
 audio_sync_channel: 1  # 0=left, 1=right
 meg_ttl_channel: STI011
 
+# the following subject number prefixes apply to the Raw files, indicating
+# whose brain was being recorded:
+# 1xxx → mother
+# 2xxx → father
+# 3xxx → infant
+# the corresponding annotations files follow the caregiver prefix (not the
+# infant prefix). Camera files seem not to have any prefix, so rely on dates
+# to match them with raw/annot files. Deviations are noted as comments below.
+
 files:
-    - cam: duo926_01_20220812_CAM3.mp4
-      raw: duo_926/220812/duo3926_dad_01_raw.fif
-    - cam: duo928_01_20220829_CAM3.mp4
-      raw: duo_928/220829/duo3928_mom_01_raw.fif
+    # ↓↓↓ raw is 901 (should be 3901?)
+    - raw: duo_901/220705/DUO901_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 904 (should be 3904?)
+    - raw: duo_904/220708/duo904_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 905 (should be 3905?)
+    - raw: duo_905/220708/duo1905_mom_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 906 (should be 3906?)
+    - raw: duo_906/220706/DUO906_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 907 (should be 3907?)
+    - raw: duo_907/220707/duo907_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1908 (should be 3908?)
+    - raw: duo_908/220713/duo1908_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1912 (should be 3912?)
+    - raw: duo_912/220713/duo1912_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1913 (should be 3913?)
+    - raw: duo_913/220713/duo1913_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1914 (should be 3914?)
+    - raw: duo_914/220713/duo1914_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1916 (should be 3916?)
+    - raw: duo_916/220719/duo1916_dad_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1917 (should be 3917?)
+    - raw: duo_917/220711/duo1917_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1919 (should be 3919?)
+    - raw: duo_919/220720/duo1919_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    - raw: duo_920/220725/duo3920_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ raw is 1921 (should be 3921?)
+    - raw: duo_921/220720/duo1921_mom_01_raw.fif
+      cam: null
+      ann: DUO_LW21921_Mother.txt
+
+    - raw: duo_921/220722/duo3921_dad_02_raw.fif
+      cam: null
+      ann: DUO_MEG_LW12921_father.txt
+
+    - raw: duo_922/220726/duo3922_mom_01_raw.fif
+      cam: null
+      ann: null
+
+    - raw: duo_922/220726/duo3922_mom_02_raw.fif
+      cam: null
+      ann: DUO_MEG_LW21922_CAM4_T2_mother.txt
+
+    # ↓↓↓ raw is 1923 (should be 3923?)
+    - raw: duo_923/220719/duo1923_mom_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW21923_CAM4_mother.txt
+
+    - raw: duo_923/220726/duo3923_dad_01_raw.fif
+      cam: null
+      ann: null  # cried whole duration of experiment; no usable data
+
+    - raw: duo_923/220726/duo3923_dad_02_raw.fif
+      cam: null
+      ann: null
+
+    - raw: duo_924/220726/duo3924_dad_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW11924_CAM4_father.txt
+
+    - raw: duo_924/220727/duo3924_mom_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW22924_CAM4_mother.txt
+
+    - raw: duo_925/220810/duo3925_dad_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW12925_CAM4_father.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_925/220808/duo3925_mom_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW21925_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_926/220812/duo3926_dad_01_raw.fif
+      cam: duo926_01_20220812_CAM3.mp4
+      ann: DUO_MEG_LW12926_CAM4_father.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_926/220811/duo3926_mom_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW21926_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_927/220818/duo3927_dad_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW11927_CAM4_father.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_927/220819/duo3927_mom_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW22927_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_928/220826/duo3928_dad_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW11928_CAM4_father.txt
+
+    - raw: duo_928/220829/duo3928_mom_01_raw.fif
+      cam: duo928_01_20220829_CAM3.mp4
+      ann: DUO_MEG_LW22928_CAM4_mother.txt
+
+    - raw: duo_929/220830/duo_3929_dad_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW12929_CAM4_father.txt
+
+    - raw: duo_929/220826/duo3929_mom_01_raw.fif
+      cam: null
+      ann: null  # cried whole duration of experiment; no usable data
+
+    - raw: duo_930/220818/duo3930_dad_01_raw.fif
+      cam: null
+      ann: null  # cried whole duration of experiment; no usable data
+
+    # ↓↓↓ raw is 3930_mom_01, annotation is 1930 "PART2".
+    # 3930_mom_01 is the only raw file I have for mom.
+    - raw: duo_930/220815/duo3930_mom_01_raw.fif
+      cam: null
+      ann: DUO_MEG_LW21930_CAM4_PART2_mother.txt  # audio issue, annotations based on infant facial expression
