@@ -80,9 +80,10 @@ for _dict in cfg['files']:
     # correlate the *pause durations* between pulse onsets
     corr = correlate(np.diff(meg_onset_times), np.diff(wav_onset_times),
                      mode='valid')
-    # because the reported sample rate is inaccurate, max correlation does not
-    # *necessarily* happen when all pulses are aligned, but hopefully we're
-    # lucky and it still gives the correct index.
+    # because the reported sample rate is inaccurate, max correlation of pulses
+    # does not necessarily happen when all pulses are aligned, but by
+    # correlating the *pause durations* instead we should be avoiding issues of
+    # *cumulative* drift
     shift_idx = wav_onset_times.size - meg_onset_times.size - corr.argmax()
     # now we can find the additional offset needed to align *matching* pulses
     match_offset_secs = np.diff(wav_onset_times[[0, shift_idx]])[0]
@@ -122,8 +123,6 @@ for _dict in cfg['files']:
         axs[3].plot(wav_times, wav, label='cam')
         axs[3].plot(meg_times, meg + 1.1, label='meg')
         axs[3].set(title='after wav beginning padded/trimmed')
-        # axs[3].axvline(meg_onset_times[-1], color='C3')
-        # axs[3].axvline(wav_onset_times[meg_onset_times.size], color='C4')
 
     # now figure out how much to "stretch" wav by
     time_stretch = (meg_onset_times[-1] /
@@ -151,6 +150,11 @@ for _dict in cfg['files']:
     print('INFO: max correlation of MEG & CAM signals differs from final '
           f'alignment by {corr_offset} samples')
     assert corr_offset in (-2, -1, 0, 1, 2)
+    # TODO: compare corr1.max() against corr0.max() where corr0 just does
+    # naive resampling without time stretch
+
+    # TODO: check any sidelobe argmaxes of corr (scipy.signal.find_peak can
+    # find them) and make sure their values are well below the global max.
 
     # convert wav to Raw and combine with meg pulses
     if show_plots:
