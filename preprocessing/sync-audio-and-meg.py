@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import mne
 import numpy as np
 import yaml
+from scipy.interpolate import interp1d
 from scipy.io import wavfile
 from scipy.signal import correlate
 
@@ -128,35 +129,19 @@ for _dict in cfg['files']:
     time_stretch = (meg_onset_times[-1] /
                     wav_onset_times[meg_onset_times.size - 1])
 
-    # resample to raw sfreq
-    sfreq_ratio = meg_sfreq / wav_sfreq * time_stretch
-    wav_resamp = mne.filter.resample(wav, up=sfreq_ratio, npad='auto')
-    wav_resamp_times = np.arange(wav_resamp.size) / meg_sfreq
+    # resample to raw sfreq. This also trims the end. kind='nearest' is suited
+    # to square-wave or step-function types of signals.
+    interp_func = interp1d(
+        x=wav_times, y=wav, kind='nearest', fill_value='extrapolate',
+        assume_sorted=True)
+    wav_resamp = interp_func(meg_times / time_stretch)
 
     # re-binarize after resampling
     wav_pulses_resamp = (wav_resamp / np.abs(wav_resamp).max() > threshold
                          ).astype(int)
 
-    # trim or pad *END* of WAV
-    diff = meg.size - wav_resamp.size
-    if diff < 0:
-        # it's possible/likely that there are pulses in the "extra" cam time
-        if wav_pulses_resamp[diff:].any():
-            n_pulses = (np.diff(wav_pulses_resamp[diff:]) == 1).sum()
-            if n_pulses != 0:
-                print(f'INFO: there were {n_pulses} pulses in the trimmed-off '
-                      'end part of the camera signal.')
-        wav_pulses_resamp = wav_pulses_resamp[:diff]
-        wav_resamp = wav_resamp[:diff]
-        wav_resamp_times = wav_resamp_times[:diff]
-    elif diff > 0:
-        zeros = np.zeros(diff, dtype=wav_pulses_resamp.dtype)
-        wav_pulses_resamp = np.hstack([wav_pulses_resamp, zeros])
-        wav_resamp = np.hstack([wav_resamp, zeros.astype(wav_resamp.dtype)])
-        wav_resamp_times = np.arange(wav_resamp.size) / wav_sfreq
-
     if show_plots:
-        axs[4].plot(wav_resamp_times, wav_resamp, label='cam')
+        axs[4].plot(meg_times, wav_resamp, label='cam')
         axs[4].plot(meg_times, meg + 1.1, label='meg')
         axs[4].set(title='after wav resampled & end-trimmed')
 
