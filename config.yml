@@ -17,74 +17,103 @@ meg_ttl_channel: STI011
 files:
     # ↓↓↓ raw is 901 (should be 3901?)
     - raw: duo_901/220705/DUO901_01_raw.fif
+      erm: duo_901/220705/DUO901_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 904 (should be 3904?)
+    # ↓↓↓ no ERM tagged for this subj; used ERM from 905 for same date
     - raw: duo_904/220708/duo904_mom_01_raw.fif
+      erm: duo_905/220708/duo905_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 905 (should be 3905?)
     - raw: duo_905/220708/duo1905_mom_raw.fif
+      erm: duo_905/220708/duo905_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 906 (should be 3906?)
     - raw: duo_906/220706/DUO906_01_raw.fif
+      erm: duo_906/220706/DUO906_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 907 (should be 3907?)
     - raw: duo_907/220707/duo907_01_raw.fif
+      erm: duo_907/220707/duo907_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1908 (should be 3908?)
     - raw: duo_908/220713/duo1908_mom_01_raw.fif
+      erm: duo_908/220713/duo1908_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1912 (should be 3912?)
     - raw: duo_912/220713/duo1912_mom_01_raw.fif
+      erm: duo_912/220713/duo1912_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1913 (should be 3913?)
     - raw: duo_913/220713/duo1913_mom_01_raw.fif
+      erm: duo_913/220713/duo1913_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1914 (should be 3914?)
     - raw: duo_914/220713/duo1914_mom_01_raw.fif
+      erm: duo_914/220713/duo1914_erm_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ ERM with no corresponding raw
+    - raw: null
+      erm: duo_915/220719/duo1915_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1916 (should be 3916?)
     - raw: duo_916/220719/duo1916_dad_01_raw.fif
+      erm: duo_916/220719/duo1916_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1917 (should be 3917?)
     - raw: duo_917/220711/duo1917_mom_01_raw.fif
+      erm: duo_917/220711/duo1917_erm_raw.fif
+      cam: null
+      ann: null
+
+    # ↓↓↓ ERM with no corresponding raw
+    - raw: null
+      erm: duo_918/220722/duo3918_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1919 (should be 3919?)
+    # ↓↓↓ no ERM tagged for this subj; used ERM from 921 for same date
     - raw: duo_919/220720/duo1919_mom_01_raw.fif
+      erm: duo_921/220720/duo1921_erm_raw.fif
       cam: null
       ann: null
 
     - raw: duo_920/220725/duo3920_mom_01_raw.fif
+      erm: duo_920/220725/duo3920_erm_raw.fif
       cam: null
       ann: null
 
     # ↓↓↓ raw is 1921 (should be 3921?)
     - raw: duo_921/220720/duo1921_mom_01_raw.fif
+      erm: duo_921/220720/duo1921_erm_raw.fif
       cam: null
       ann: DUO_LW21921_Mother.txt
 
     - raw: duo_921/220722/duo3921_dad_02_raw.fif
+      erm: duo_921/220722/duo3921_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW12921_father.txt
 
@@ -93,76 +122,156 @@ files:
       ann: null
 
     - raw: duo_922/220726/duo3922_mom_02_raw.fif
+      erm: duo_922/220726/duo922_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW21922_CAM4_T2_mother.txt
 
+    # ↓↓↓ ERM with no corresponding raw
+    - raw: null
+      erm: duo_922/220728/duo922_erm_raw.fif
+      cam: null
+      ann: null
+
     # ↓↓↓ raw is 1923 (should be 3923?)
     - raw: duo_923/220719/duo1923_mom_01_raw.fif
+      erm: duo_923/220719/duo1923_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW21923_CAM4_mother.txt
 
     - raw: duo_923/220726/duo3923_dad_01_raw.fif
+      erm: duo_923/220726/duo923_erm_raw.fif
       cam: null
       ann: null  # cried whole duration of experiment; no usable data
 
     - raw: duo_923/220726/duo3923_dad_02_raw.fif
+      erm: duo_923/220726/duo923_erm_raw.fif
       cam: null
       ann: null
 
     - raw: duo_924/220726/duo3924_dad_01_raw.fif
+      erm: duo_924/220726/duo924_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW11924_CAM4_father.txt
 
     - raw: duo_924/220727/duo3924_mom_01_raw.fif
+      erm: duo_924/220727/duo924_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW22924_CAM4_mother.txt
 
     - raw: duo_925/220810/duo3925_dad_01_raw.fif
+      erm: duo_925/220810/duo_925_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW12925_CAM4_father.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_925/220808/duo3925_mom_01_raw.fif
+      erm: duo_925/220808/duo925_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW21925_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_926/220812/duo3926_dad_01_raw.fif
+      erm: duo_926/220812/duo926_erm_raw.fif
       cam: duo926_01_20220812_CAM3.mp4
       ann: DUO_MEG_LW12926_CAM4_father.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_926/220811/duo3926_mom_01_raw.fif
+      erm: duo_926/220811/duo926_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW21926_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_927/220818/duo3927_dad_01_raw.fif
+      erm: duo_927/220818/duo927_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW11927_CAM4_father.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_927/220819/duo3927_mom_01_raw.fif
+      erm: duo_927/220819/duo927_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW22927_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_928/220826/duo3928_dad_01_raw.fif
+      erm: duo_928/220826/duo3928_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW11928_CAM4_father.txt
 
     - raw: duo_928/220829/duo3928_mom_01_raw.fif
+      erm: duo_928/220829/duo3928_erm_raw.fif
       cam: duo928_01_20220829_CAM3.mp4
       ann: DUO_MEG_LW22928_CAM4_mother.txt
 
     - raw: duo_929/220830/duo_3929_dad_01_raw.fif
+      erm: duo_929/220830/duo_3929_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW12929_CAM4_father.txt
 
     - raw: duo_929/220826/duo3929_mom_01_raw.fif
+      erm: duo_929/220826/duo3929_erm_raw.fif
       cam: null
       ann: null  # cried whole duration of experiment; no usable data
 
     - raw: duo_930/220818/duo3930_dad_01_raw.fif
+      erm: duo_930/220818/duo930_erm_raw.fif
       cam: null
       ann: null  # cried whole duration of experiment; no usable data
 
     # ↓↓↓ raw is 3930_mom_01, annotation is 1930 "PART2".
     # 3930_mom_01 is the only raw file I have for mom.
     - raw: duo_930/220815/duo3930_mom_01_raw.fif
+      erm: duo_930/220815/duo930_erm_raw.fif
       cam: null
       ann: DUO_MEG_LW21930_CAM4_PART2_mother.txt  # audio issue, annotations based on infant facial expression
+
+    - raw: duo_931/221013/duo3931_S1_1_raw.fif
+      erm: duo_931/221013/duo3931_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01931_CAM4_compressed.txt
+
+    # ↓↓↓ ERM with no corresponding raw
+    - raw: null
+      erm: duo_932/221013/duo3932_S1_erm_raw.fif
+      cam: null
+      ann: null
+
+    - raw: duo_933/221010/duo3933_S1_1_raw.fif
+      erm: duo_933/221010/duo3933_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01933_CAM4_compressed.txt
+
+    - raw: duo_934/221012/duo3934_S1_1_raw.fif
+      erm: duo_934/221012/duo3934_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01934_CAM4_compressed.txt
+
+    - raw: duo_935/221012/duo3935_S1_1_raw.fif
+      erm: duo_935/221012/duo3935_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01935_CAM4_compressed.txt
+
+    - raw: duo_937/221013/duo3937_S1_1_raw.fif
+      erm: duo_937/221013/duo3937_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01937_CAM4_compressed.txt
+
+    - raw: duo_938/221010/duo3938_S1_1_raw.fif
+      erm: duo_938/221010/duo3938_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01938.txt
+
+    - raw: duo_940/221012/duo3940_S1_1_raw.fif
+      erm: duo_940/221012/duo3940_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01940_CAM4_compressed.txt
+
+    - raw: duo_941/221011/duo3941_S1_1_raw.fif
+      erm: duo_941/221011/duo3941_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01941_CAM3_PART1_compressed.txt
+
+    - raw: duo_941/221011/duo3941_S1_2_raw.fif
+      erm: duo_941/221011/duo3941_S1_erm_raw.fif
+      cam: null
+      ann: null
+
+    - raw: duo_942/221013/duo3942_S1_1_raw.fif
+      erm: duo_942/221013/duo3942_S1_erm_raw.fif
+      cam: null
+      ann: DUO_MEG_LW01942_CAM4_compressed.txt
