@@ -3,6 +3,7 @@ Converts camera annotation files into MNE-Python annotation objects, correcting
 for mismatched time bases of the camera and the MEG system.
 """
 import os
+import re
 import warnings
 from pathlib import Path, PureWindowsPath
 
@@ -28,14 +29,22 @@ with open(config_file, 'r') as cfg_file:
 stim_ch = cfg['meg_ttl_channel']
 raw_dir = Path(cfg['raw_folder'])
 annot_dir = Path(cfg['annot_folder'])
-raw_annot_dir = annot_dir.parent / 'raw-annot'
 sync_dir = Path(cfg['audio_folder']).parent / 'sync'
+raw_annot_dir = annot_dir.parent / 'raw-annot'
+os.makedirs(raw_annot_dir, exist_ok=True)
 
 for _dict in cfg['files']:
     if _dict['ann'] is None or _dict['cam'] is None or _dict['raw'] is None:
         continue
     print(f'INFO: processing {Path(_dict["raw"]).parts[0]}')
-    os.makedirs(raw_annot_dir, exist_ok=True)
+    # make sure the camera file used for sync and the camera file used for
+    # annotation were the same camera
+    pattern = re.compile(r'cam[\-_\w]?\d', re.IGNORECASE)
+    matches = pattern.findall(_dict['ann'])
+    assert len(matches) == 1, 'cannot determine which camera was annotated'
+    pattern = re.compile(matches[0], re.IGNORECASE)  # now has specific digit
+    matches = pattern.findall(_dict['cam'])
+    assert len(matches) == 1, 'sync camera and annotation camera mismatch'
     # load annotations. first make sure the header rows give what we expect.
     ann_path = annot_dir / _dict['ann']
     with open(ann_path, 'r') as f:
