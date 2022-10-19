@@ -29,10 +29,13 @@ for _dict in cfg['files']:
                   video_path],
                  capture_output=True)
     codec = result.stdout.decode().lower()
+    err = result.stderr.decode()
+    if len(err):
+        raise RuntimeError(err)
     if codec.startswith('pcm'):
         audio_ext = 'wav'
     else:
-        raise NotImplementedError(f'unsupported audio codec {codec}')
+        raise NotImplementedError(f'unsupported audio codec "{codec}".')
     # extract audio channel from each video
     audio_path = Path(cfg['audio_folder']) / f'{video_path.stem}.{audio_ext}'
     result = run(['ffmpeg',
