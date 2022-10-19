@@ -26,7 +26,6 @@ config_file = Path(__file__).resolve().parent.parent / 'config.yml'
 with open(config_file, 'r') as cfg_file:
     cfg = yaml.load(cfg_file, Loader=yaml.SafeLoader)
 
-stim_ch = cfg['meg_ttl_channel']
 raw_dir = Path(cfg['raw_folder'])
 annot_dir = Path(cfg['annot_folder'])
 sync_dir = Path(cfg['audio_folder']).parent / 'sync'
