@@ -1,7 +1,12 @@
+# these will need to be updated for the scripts to work on different systems,
+# but once you update these paths to the correct path for your system
+# everything should "just work".
 raw_folder: /data/duo-pilot/raw
 video_folder: /data/duo-pilot/video
-annot_folder: /data/duo-pilot/annot
+annot_folder: /data/duo-pilot/cam-annot
 audio_folder: /data/duo-pilot/audio
+
+# these shouldn't need to be changed
 audio_sync_channel: 1  # 0=left, 1=right
 meg_ttl_channel: STI011
 
@@ -12,7 +17,13 @@ meg_ttl_channel: STI011
 # 3xxx → infant
 # the corresponding annotations files follow the caregiver prefix (not the
 # infant prefix). Camera files seem not to have any prefix, so rely on dates
-# to match them with raw/annot files. Deviations are noted as comments below.
+# to match them with raw/annot files.
+#
+# **MAKE SURE** to use the same camera for synchronization as was used for
+# annotation! I.e., if the `ann` filename says "cam4" then the `cam` filename
+# should also say "cam4" somewhere.
+#
+# Any deviations from the above guidelines are noted as comments below.
 
 files:
     # ↓↓↓ raw is 901 (should be 3901?)
@@ -168,9 +179,11 @@ files:
       cam: null
       ann: DUO_MEG_LW21925_CAM4_mother.txt  # audio issue, annotations based on infant facial expression
 
+    # ↓↓↓ TODO check the cam filename (make sure it exists); it was edited from
+    # ↓↓↓ "CAM3" to "CAM4" assuming consistent naming.
     - raw: duo_926/220812/duo3926_dad_01_raw.fif
       erm: duo_926/220812/duo926_erm_raw.fif
-      cam: duo926_01_20220812_CAM3.mp4
+      cam: duo926_01_20220812_CAM4.mp4
       ann: DUO_MEG_LW12926_CAM4_father.txt  # audio issue, annotations based on infant facial expression
 
     - raw: duo_926/220811/duo3926_mom_01_raw.fif
@@ -193,9 +206,11 @@ files:
       cam: null
       ann: DUO_MEG_LW11928_CAM4_father.txt
 
+    # ↓↓↓ TODO check the cam filename (make sure it exists); it was edited from
+    # ↓↓↓ "CAM3" to "CAM4" assuming consistent naming.
     - raw: duo_928/220829/duo3928_mom_01_raw.fif
       erm: duo_928/220829/duo3928_erm_raw.fif
-      cam: duo928_01_20220829_CAM3.mp4
+      cam: duo928_01_20220829_CAM4.mp4
       ann: DUO_MEG_LW22928_CAM4_mother.txt
 
     - raw: duo_929/220830/duo_3929_dad_01_raw.fif
